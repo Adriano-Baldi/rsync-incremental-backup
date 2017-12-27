@@ -46,7 +46,7 @@ do
 done
 
 # Prepare main rsync configuration
-rsyncFlags="-achv --info=progress2 --timeout=${timeout} --delete --partial-dir=${partialFolderPath} \
+rsyncFlags="-achv --info=progress2 --timeout=${timeout} --whole-file --delete --partial-dir=${partialFolderPath} \
 --link-dest=${bak1}/ --log-file=${logFile} --exclude=${tempLogBasePath} --chmod=+r"
 
 # Prepare log rsync configuration
