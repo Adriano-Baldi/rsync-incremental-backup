@@ -113,7 +113,8 @@ Log files per backup operation will be stored at `<dst>/log`.
 * `-z`: compress file data during the transfer. Less data transmitted, but slower. Omit this flag when backup target is a local device or a machine in local network (or when you have a high bandwidth to a remote machine).
 * `--progress`: show progress per file during transfer. Only for interactive usage.
 * `--info=progress2`: show progress based on the whole transfer, rather than individual files. Only for interactive usage.
-* `--timeout`: set I/O timeout in seconds. If no data is transferred for the specified time, backup will be aborted.
+* `--timeout`: set I/O timeout in seconds. If no data is transferred for the specified time, backup will be aborted. 
+* `--whole-file`: With this option rsync’s delta-transfer algorithm is not used and the whole file is sent as-is instead. The transfer may be faster if this option is used when the bandwidth  between  the  source  and  destination machines is higher than the bandwidth to disk (especially when the "disk" is actually a networked filesystem). This is the default when both the source and destination are specified as local paths, but only if no batch-writing option is in effect.
 * `--delete`: delete extraneous files from dest dirs. Mandatory for master-slave backup usage.
 * `--no-W`: ensures that rsync's delta-transfer algorithm is used, so it never transfers whole files if they are present at target. Omit only when you have a high bandwidth to target, backup may be faster.
 * `--partial-dir`: put a partially transferred file into specified directory, instead of using a hidden file in the original path of transferred file. Mandatory for allow partial transfers and avoid misleads with incomplete/corrupt files.
